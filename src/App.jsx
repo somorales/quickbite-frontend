@@ -10,6 +10,7 @@ import Favorites from "./pages/Favorites";
 import RecipePage from "./pages/RecipePage";
 import MealListPage from "./pages/MealListPage";
 import Ingredients from "./pages/Ingredients";
+import NavigationBar from "./components/NavigationBar";
 
 export default function App() {
   return (
@@ -23,7 +24,8 @@ export default function App() {
         <Route path="/mealsList" element={<MealListPage />} />
         <Route path="/mealsList/ingredients" element={<Ingredients />} />
       </Routes>
-      <Footer />
+
+      <NavigationBar />
     </>
   );
 }
