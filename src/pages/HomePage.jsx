@@ -7,7 +7,6 @@ import SearchForm from "../components/SearchForm.jsx";
 export default function HomePage() {
   const [allRecipes, setAllRecipes] = useState([]);
   const [mostPopular, setMostPopular] = useState([]);
-  const [userSearchRecipe, setUserSearchRecipe] = useState(null);
 
   useEffect(() => {
     service
@@ -35,9 +34,10 @@ export default function HomePage() {
 
   const handleSearchRecipe = (name) => {
     service
-      .get(`/recipes?name=${name}`)
+      .get(`/recipes?name=${name}`) // get(`/recipes?cooking_time=${cookingTime}&dietary_style $cuisine`)
       .then((response) => {
         setAllRecipes(response.data);
+
         console.log(response.data);
       })
       .catch((err) => {
