@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const [allRecipes, setAllRecipes] = useState([]);
   const [mostPopular, setMostPopular] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     service
@@ -34,7 +37,7 @@ export default function HomePage() {
 
   const handleSearchRecipe = (name) => {
     service
-      .get(`/recipes?name=${name}`) // get(`/recipes?cooking_time=${cookingTime}&dietary_style $cuisine`)
+      .get(`/recipes?name=${name}`)
       .then((response) => {
         setAllRecipes(response.data);
 
@@ -43,6 +46,10 @@ export default function HomePage() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleSeeAll = () => {
+    navigate(`/recipes`);
   };
 
   return (
@@ -67,8 +74,11 @@ export default function HomePage() {
           Recipes
         </h1>
 
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          Ver más
+        <button
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={handleSeeAll}
+        >
+          See All
         </button>
         {allRecipes.slice(0, 5).map((recipe) => (
           <div key={recipe._id} className="relative p-2">

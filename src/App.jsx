@@ -11,12 +11,15 @@ import RecipePage from "./pages/RecipePage";
 import MealListPage from "./pages/MealListPage";
 import Ingredients from "./pages/Ingredients";
 import NavigationBar from "./components/NavigationBar";
+import AllRecipes from "./pages/AllRecipes";
 
 export default function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/recipes" element={<AllRecipes />} />
+
         <Route path="/filters" element={<Filters />} />
         <Route path="/filteredResults" element={<FilteredResults />} />
         <Route path="/favorites" element={<Favorites />} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
+import { useNavigate } from "react-router-dom";
 
 export default function FiltersPage() {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -9,6 +10,8 @@ export default function FiltersPage() {
   const [cuisine, setCuisine] = useState("");
   const [allCuisines, setAllCuisines] = useState([]);
   const [allDietary_style, setAlldietary_style] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     service
@@ -49,18 +52,9 @@ export default function FiltersPage() {
   };
 
   const handleApply = () => {
-    service
-      .get(
-        `/recipes?cooking_time=${cooking_time}&dietary_style=${dietaryStyle}&cuisine=${cuisine}`
-      )
-      .then((response) => {
-        setAllRecipes(response.data);
-
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    navigate(
+      `/filteredResults?cooking_time=${cooking_time}&dietary_style=${dietaryStyle}&cuisine=${cuisine}`
+    );
   };
 
   return (
