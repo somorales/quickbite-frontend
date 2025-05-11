@@ -80,8 +80,13 @@ export default function HomePage() {
         >
           See All
         </button>
+
         {allRecipes.slice(0, 5).map((recipe) => (
-          <div key={recipe._id} className="relative p-2">
+          <Link
+            key={recipe._id}
+            to={`/recipes/${recipe._id}`}
+            className="relative p-2"
+          >
             <h3 class="text-lg font-semibold text-black">{recipe.name}</h3>
             <div class="text-lg font-semibold text-black">
               {recipe.cooking_time_minutes}
@@ -89,7 +94,7 @@ export default function HomePage() {
             <div class="flex items-center mt-2 text-sm opacity-80">
               <img alt={recipe.name} src={recipe.image} />
             </div>
-          </div>
+          </Link>
         ))}
 
         <h1 className="text-[#47307D] font-sans text-2xl font-bold py-2">

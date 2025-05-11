@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 // pages
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/auth/LoginPage";
+import Signup from "./pages/auth/Signup";
 import Footer from "./components/Footer";
 import Filters from "./pages/FiltersPage";
 import FilteredResults from "./pages/FilteredResults";
@@ -17,13 +19,17 @@ export default function App() {
   return (
     <>
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+
         <Route path="/" element={<HomePage />} />
+
         <Route path="/recipes" element={<AllRecipes />} />
 
         <Route path="/filters" element={<Filters />} />
         <Route path="/filteredResults" element={<FilteredResults />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/recipe/recipeId" element={<RecipePage />} />
+        <Route path="/recipes/:recipeId" element={<RecipePage />} />
         <Route path="/mealsList" element={<MealListPage />} />
         <Route path="/mealsList/ingredients" element={<Ingredients />} />
       </Routes>
