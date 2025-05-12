@@ -69,7 +69,7 @@ export default function HomePage() {
           filtros
         </Link>
       </div>
-      <div class="bottom-4 left-4 text-white">
+      <div className="bottom-4 left-4 text-white">
         <h1 className="text-[#47307D] font-sans text-2xl font-bold py-2">
           Recipes
         </h1>
@@ -87,11 +87,11 @@ export default function HomePage() {
             to={`/recipes/${recipe._id}`}
             className="relative p-2"
           >
-            <h3 class="text-lg font-semibold text-black">{recipe.name}</h3>
-            <div class="text-lg font-semibold text-black">
+            <h3 className="text-lg font-semibold text-black">{recipe.name}</h3>
+            <div className="text-lg font-semibold text-black">
               {recipe.cooking_time_minutes}
             </div>
-            <div class="flex items-center mt-2 text-sm opacity-80">
+            <div className="flex items-center mt-2 text-sm opacity-80">
               <img alt={recipe.name} src={recipe.image} />
             </div>
           </Link>
@@ -105,11 +105,11 @@ export default function HomePage() {
         </button>
         {mostPopular.slice(0, 5).map((recipe) => (
           <div key={recipe._id} className="relative p-2">
-            <h3 class="text-lg font-semibold text-black">{recipe.name}</h3>
-            <div class="text-lg font-semibold text-black">
+            <h3 className="text-lg font-semibold text-black">{recipe.name}</h3>
+            <div className="text-lg font-semibold text-black">
               {recipe.cooking_time_minutes}
             </div>
-            <div class="flex items-center mt-2 text-sm opacity-80">
+            <div className="flex items-center mt-2 text-sm opacity-80">
               <img alt={recipe.name} src={recipe.image} />
             </div>
           </div>
