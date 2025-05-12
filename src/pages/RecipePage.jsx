@@ -48,6 +48,26 @@ export default function RecipePage() {
     }
   };
 
+  const handleAddMealList = async (e) => {
+    e.preventDefault();
+
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+
+    const recipeMealList = {
+      recipeId: params.recipeId,
+    };
+
+    try {
+      await service.post(`/basket`, recipeMealList);
+
+      navigate(`/mealsList`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">{recipe.name}</h1>
@@ -67,6 +87,14 @@ export default function RecipePage() {
           className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
         >
           Favorito
+        </button>
+      </div>
+      <div className="space-y-3">
+        <button
+          onClick={handleAddMealList}
+          className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
+        >
+          Agregar a la lista de comidas
         </button>
       </div>
     </div>

@@ -5,23 +5,32 @@ import service from "../services/config.js";
 
 export default function Favorites() {
   const [allFavorites, setAllFavorites] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    loadFavorites();
+  }, []);
+
+  const loadFavorites = () => {
+    setIsLoading(true);
     service
       .get(`/favorites`)
       .then((response) => {
         setAllFavorites(response.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
+        setErrorMessage("Error de comunicación con el servidor.");
       });
-  }, []);
+  };
 
   const handleProductFavoriteDelete = (recipeId) => {
     service
       .delete(`/favorites/recipes/${recipeId}`)
-      .then(() => {
-        setAllFavorites((prev) => prev.filter((item) => item._id !== recipeId));
+      .then((response) => {
+        loadFavorites();
       })
       .catch((err) => {
         console.log(err);
