@@ -17,6 +17,7 @@ export default function Favorites() {
       .get(`/favorites`)
       .then((response) => {
         setAllFavorites(response.data);
+        console.log(response.data);
         setIsLoading(false);
       })
       .catch((err) => {
