@@ -21,7 +21,6 @@ export default function RecipePage() {
     service
       .get(`/recipes/${params.recipeId}`)
       .then((response) => {
-        console.log(response.data);
         setrecipe(response.data);
       })
       .catch((err) => {

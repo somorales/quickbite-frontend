@@ -11,13 +11,23 @@ export default function Favorites() {
       .get(`/favorites`)
       .then((response) => {
         setAllFavorites(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  const handleProductFavoriteDelete = (recipeId) => {
+    service
+      .delete(`/favorites/recipes/${recipeId}`)
+      .then(() => {
+        setAllFavorites((prev) => prev.filter((item) => item._id !== recipeId));
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrorMessage("Error de comunicación con el servidor.");
+      });
+  };
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Favorites</h1>
@@ -29,6 +39,14 @@ export default function Favorites() {
               <p>Cuisine: {recipe.cuisine}</p>
               <p>Dietary style: {recipe.dietary_style}</p>
               <p>Cooking time: {recipe.cooking_time} min</p>
+              <div className="space-y-3">
+                <button
+                  onClick={() => handleProductFavoriteDelete(recipe._id)}
+                  className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
+                >
+                  delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
