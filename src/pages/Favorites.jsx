@@ -28,7 +28,7 @@ export default function Favorites() {
       });
   };
 
-  const handleProductFavoriteDelete = (recipeId) => {
+  /* const handleProductFavoriteDelete = (recipeId) => {
     service
       .delete(`/favorites/recipes/${recipeId}`)
       .then((response) => {
@@ -38,9 +38,9 @@ export default function Favorites() {
         console.log(err);
         setErrorMessage("Error de comunicación con el servidor.");
       });
-  };
+  };*/
   return (
-    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B] text-white">
+    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
       <div className="px-6 pb-6">
         <h1 className="text-4xl font-bold text-[#6B8E23]">Your favorites:</h1>
       </div>
@@ -59,7 +59,7 @@ export default function Favorites() {
                   className="w-full h-44 object-cover"
                 />
                 <div className="absolute bottom-0 left-0 p-2">
-                  <p className="text-xl font-extrabold bg-black bg-opacity-20">
+                  <p className="text-xl text-white font-extrabold bg-black bg-opacity-20">
                     {recipe.name}
                   </p>
                 </div>

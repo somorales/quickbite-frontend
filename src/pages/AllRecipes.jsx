@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  AdjustmentsHorizontalIcon,
+  ClockIcon,
+} from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import SearchForm from "../components/SearchForm.jsx";
@@ -33,36 +37,51 @@ export default function HomePage() {
   };
 
   return (
-    <div>
-      <div className="flex gap-2 mb-6"></div>
-      <div class="bottom-4 left-4 text-white">
-        <div className="relative flex-grow">
+    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl  text-[#6B8E23]">Search recipes</h1>
+      </div>
+
+      <div className="flex gap-2 mb-6 px-6 ">
+        <div className="relative flex-1 mr-2">
           <SearchForm
             placeholder="search recipe"
             onSearch={handleSearchRecipe}
             className="w-full px-4 py-2 border border-gray-300 rounded-full text-sm"
           />
         </div>
-        <Link
-          to="/filters"
-          className="bg-[#47307D] text-white px-4 py-2 rounded-full text-base font-medium whitespace-nowrap"
-        >
-          filtros
+        <Link to="/filters">
+          <AdjustmentsHorizontalIcon className="h-12 w-12 text-[#737373] border border-white rounded-[12px]  " />
         </Link>
-        <h1 className="text-[#47307D] font-sans text-2xl font-bold py-2">
-          Recipes
-        </h1>
-        {allRecipes.map((recipe) => (
-          <div key={recipe._id} className="relative p-2">
-            <h3 class="text-lg font-semibold text-black">{recipe.name}</h3>
-            <div class="text-lg font-semibold text-black">
-              {recipe.cooking_time_minutes}
-            </div>
-            <div class="flex items-center mt-2 text-sm opacity-80">
-              <img alt={recipe.name} src={recipe.image} />
-            </div>
-          </div>
-        ))}
+      </div>
+      <div className="px-6 mb-2">
+        <h2 className="text-2xl font-bold text-[#6B8E23]">All Recipes:</h2>
+      </div>
+      <div className="px-4 overflow-y-auto flex-1">
+        <div className="grid grid-cols-2 gap-4 pb-20">
+          {allRecipes.map((recipe) => (
+            <Link key={recipe._id} to={`/recipes/${recipe._id}`}>
+              <div key={recipe._id} className="relative p-2">
+                <img
+                  src={recipe.image}
+                  alt={recipe.title}
+                  className="w-full h-40 object-cover rounded-[12px]"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                  <h3 className="text-sm font-medium bg-black text-white bg-opacity-20">
+                    {recipe.name}
+                  </h3>
+                  <div className="flex items-center mt-1">
+                    <ClockIcon className="w-4 h-4 text-white mr-1" />
+                    <span className="text-xs text-white">
+                      {recipe.cooking_time_minutes} <span>min</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
