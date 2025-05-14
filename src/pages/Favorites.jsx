@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import service from "../services/config.js";
 
@@ -39,29 +40,35 @@ export default function Favorites() {
       });
   };
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Favorites</h1>
+    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B] text-white">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl font-bold text-[#6B8E23]">Your favorites:</h1>
+      </div>
+
       {allFavorites.length > 0 ? (
-        <ul>
+        <div className="flex-1 overflow-y-auto px-6 pb-16">
           {allFavorites.map((recipe) => (
-            <li key={recipe._id} className="mb-4 p-4 border rounded">
-              <h2 className="text-xl font-semibold">{recipe.name}</h2>
-              <p>Cuisine: {recipe.cuisine}</p>
-              <p>Dietary style: {recipe.dietary_style}</p>
-              <p>Cooking time: {recipe.cooking_time} min</p>
-              <div className="space-y-3">
-                <button
-                  onClick={() => handleProductFavoriteDelete(recipe._id)}
-                  className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
-                >
-                  delete
-                </button>
+            <Link to={`/recipes/${recipe._id}`}>
+              <div
+                key={recipe.id}
+                className="mb-6 relative rounded-lg overflow-hidden"
+              >
+                <img
+                  src={recipe.image}
+                  alt={recipe.name}
+                  className="w-full h-44 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 p-2">
+                  <p className="text-xl font-extrabold bg-black bg-opacity-20">
+                    {recipe.name}
+                  </p>
+                </div>
               </div>
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>No tines favoritos </p>
+        <p>Start adding favorites to your list!</p>
       )}
     </div>
   );
