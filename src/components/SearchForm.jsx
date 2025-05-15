@@ -18,14 +18,14 @@ export default function SearchForm(props) {
       <div className="relative">
         <input
           type="text"
-          className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] py-3 px-4 pl-10 hover-white  focus:outline-none "
+          className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] text-white  py-3 px-4 pl-10 hover-white  focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent "
           placeholder="Write a dish"
           value={search}
           onChange={handleSearchChange}
         />
         <button
           type="submit"
-          className="absolute inset-y-0 right-[4.5rem] flex items-center text-[#737373] rounded-r-full hover-white focus:outline-none"
+          className="absolute inset-y-0 right-[4.5rem] flex items-center text-white rounded-r-full hover-white focus:outline-non    "
         >
           <svg
             className="w-5 h-5"

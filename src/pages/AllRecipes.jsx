@@ -47,7 +47,6 @@ export default function HomePage() {
           <SearchForm
             placeholder="search recipe"
             onSearch={handleSearchRecipe}
-            className="w-full px-4 py-2 border border-gray-300 rounded-full text-sm"
           />
         </div>
         <Link to="/filters">
