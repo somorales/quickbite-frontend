@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function FiltersPage() {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -58,15 +59,19 @@ export default function FiltersPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-      <h1 className="text-4xl font-bold mb-6">Search filters</h1>
+    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl font-bold text-[#6B8E23]">Search filters:</h1>
+      </div>
 
       {/* Cuisine Filter */}
-      <div className="mb-8">
-        <label className="block text-2xl font-medium mb-2">Cuisine:</label>
+      <div className="px-6 pb-12">
+        <div className="relative mb-2 flex-1 mr-2">
+          <h2 className="text-2xl font-semibold text-[#6B8E23]">Cuisine</h2>
+        </div>
         <div className="relative">
           <select
-            className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-10"
+            className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] text-white  py-3 px-4 appearance-none hover-white  focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent "
             value={cuisine}
             onChange={handleCuisineChange}
           >
@@ -77,17 +82,20 @@ export default function FiltersPage() {
               </option>
             ))}
           </select>
+          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+            <ChevronDownIcon className="w-4 h-4 text-white" />
+          </div>
         </div>
       </div>
 
       {/* Dietary Style Filter */}
-      <div className="mb-8">
-        <label className="block text-2xl font-medium mb-2">
-          Dietary style:
-        </label>
+      <div className="px-6 pb-12">
+        <div className="relative mb-2 flex-1 mr-2">
+          <h2 className="text-2xl font-bold text-[#6B8E23]">Dietary Style</h2>
+        </div>
         <div className="relative">
           <select
-            className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-10"
+            className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] text-white  py-3 px-4 appearance-none  hover-white  focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent "
             value={dietaryStyle}
             onChange={handleDietaryStyleChange}
           >
@@ -98,16 +106,21 @@ export default function FiltersPage() {
               </option>
             ))}
           </select>
+          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+            <ChevronDownIcon className="w-4 h-4 text-white" />
+          </div>
         </div>
       </div>
 
       {/* Cooking Time Filter */}
-      <div className="mb-8">
-        <label className="block text-2xl font-medium mb-2">Cooking time:</label>
-        <div className="mt-6">
+      <div className="px-6 pb-6">
+        <div className="relative mb-2 flex-1 mr-2">
+          <h2 className="text-2xl font-bold text-[#6B8E23]">Cooking Time</h2>
+        </div>
+        <div className="mt-6 pb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-lg font-medium">{cooking_time}min</span>
-            <span className="text-sm text-gray-500">60min</span>
+            <span className="text-sm text-white">{cooking_time}min</span>
+            <span className="text-sm text-white">60min</span>
           </div>
           <input
             type="range"
@@ -115,16 +128,15 @@ export default function FiltersPage() {
             max="60"
             value={cooking_time}
             onChange={handleCooking_timeChange}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[#6B8E23] "
+            style={{ accentColor: "#1C4C0D" }}
           />
         </div>
+        <div className="border-t border-[#6B8E23]  pt-4 mt-2"></div>
       </div>
-
-      <div className="border-t border-gray-200 pt-4 mt-2"></div>
-
-      <div className="border-t border-gray-200 pt-6 mt-4">
+      <div className=" flex justify-center">
         <button
-          className="w-full py-3 px-4 bg-black text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
+          className=" mt-48 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
           onClick={handleApply}
         >
           Apply
