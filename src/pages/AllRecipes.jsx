@@ -54,7 +54,7 @@ export default function HomePage() {
         </Link>
       </div>
       <div className="px-6 mb-2">
-        <h2 className="text-2xl font-bold text-[#6B8E23]">All Recipes:</h2>
+        <h2 className="text-2xl font-bold text-[#6B8E23]">All recipes:</h2>
       </div>
       <div className="px-4 overflow-y-auto flex-1">
         <div className="grid grid-cols-2 gap-4 pb-20">

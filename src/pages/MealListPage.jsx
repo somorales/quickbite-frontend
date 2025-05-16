@@ -80,18 +80,20 @@ export default function MealListPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Your meals</h1>
+    <div className="mt-6 flex flex-col min-h-screen bg-[#1A1A1B] overflow-y-auto">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl font-bold text-[#6B8E23]">Your meals list</h1>
+      </div>
       {allmealList.length > 0 ? (
         <ul>
           {allmealList.map((recipe) => (
-            <li key={recipe._id} className="mb-4 p-4 border rounded">
-              <div className="flex justify-between items-center bg-gray-800 text-white p-4 rounded-xl shadow">
+            <li key={recipe._id} className="mb-4 p-4">
+              <div className="flex justify-between items-center bg-[#313131] text-white p-4 rounded-xl shadow">
                 <div className="text-lg font-semibold">{recipe.name}</div>
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => handleDecrement(recipe._id)}
-                    className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-yellow-100 text-lg"
+                    className="w-8 h-8 rounded-full bg-[#6B8E23] flex items-center justify-center text-yellow-100 text-lg"
                   >
                     −
                   </button>
@@ -100,7 +102,7 @@ export default function MealListPage() {
                   </span>
                   <button
                     onClick={() => handleIncrement(recipe._id)}
-                    className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white text-lg"
+                    className="w-8 h-8 rounded-full bg-[#6B8E23]  flex items-center justify-center text-white text-lg"
                   >
                     +
                   </button>
@@ -110,28 +112,34 @@ export default function MealListPage() {
           ))}
         </ul>
       ) : (
-        <p>No tienes comidas </p>
+        <p> Add meals to your list </p>
       )}
-      <button
-        onClick={generarLista}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-      >
-        Generate shopping list
-      </button>
+
+      <div className=" flex justify-center">
+        <button
+          className=" mt-4 mb-4 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-[#1C4C0D] transition-colors"
+          onClick={generarLista}
+        >
+          Generate shopping list
+        </button>
+      </div>
 
       {listaUnificada && (
-        <div className="mt-6 bg-gray-100 p-4 rounded">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">
-            Lista Unificada de Supermercado:
-          </h3>
-          <ul>
-            {listaUnificada.map((groceryItem) => (
-              <li>
-                {groceryItem.ingredient} : {groceryItem.quantity}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+          <div className="px-6 pb-2 pt-2">
+            <h1 className="text-2xl font-bold text-[#6B8E23]">Grocery list</h1>
+          </div>
+
+          <div className=" px-6 mt-2 mb-24">
+            <ul className="bg-[#313131] mb-4 p-4 rounded-xl shadow ">
+              {listaUnificada.map((groceryItem) => (
+                <li key={groceryItem.ingredient} className="text-white ">
+                  {groceryItem.ingredient} : {groceryItem.quantity}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
       )}
     </div>
   );

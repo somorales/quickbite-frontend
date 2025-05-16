@@ -42,7 +42,7 @@ export default function Favorites() {
   return (
     <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
       <div className="px-6 pb-6">
-        <h1 className="text-4xl font-bold text-[#6B8E23]">Your favorites:</h1>
+        <h1 className="text-4xl font-bold text-[#6B8E23]">Your favorites</h1>
       </div>
 
       {allFavorites.length > 0 ? (

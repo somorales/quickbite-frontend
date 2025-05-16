@@ -91,7 +91,7 @@ export default function FiltersPage() {
       {/* Dietary Style Filter */}
       <div className="px-6 pb-12">
         <div className="relative mb-2 flex-1 mr-2">
-          <h2 className="text-2xl font-bold text-[#6B8E23]">Dietary Style</h2>
+          <h2 className="text-2xl font-bold text-[#6B8E23]">Dietary style</h2>
         </div>
         <div className="relative">
           <select
@@ -115,7 +115,7 @@ export default function FiltersPage() {
       {/* Cooking Time Filter */}
       <div className="px-6 pb-6">
         <div className="relative mb-2 flex-1 mr-2">
-          <h2 className="text-2xl font-bold text-[#6B8E23]">Cooking Time</h2>
+          <h2 className="text-2xl font-bold text-[#6B8E23]">Cooking time</h2>
         </div>
         <div className="mt-6 pb-6">
           <div className="flex items-center justify-between mb-2">
