@@ -68,7 +68,9 @@ export default function Favorites() {
           ))}
         </div>
       ) : (
-        <p>Start adding favorites to your list!</p>
+        <p className="px-6  text-4xl text-white">
+          Start adding favorites to your list!
+        </p>
       )}
     </div>
   );

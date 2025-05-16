@@ -5,13 +5,14 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Loading from "../components/Loading.jsx";
+import { ClockIcon } from "@heroicons/react/24/outline";
 
 export default function RecipePage() {
   const navigate = useNavigate();
 
   const params = useParams();
 
-  const [recipe, setrecipe] = useState({});
+  const [recipe, setRecipe] = useState({});
 
   const { isLoggedIn, isAdmin } = useContext(AuthContext);
 
@@ -21,7 +22,7 @@ export default function RecipePage() {
     service
       .get(`/recipes/${params.recipeId}`)
       .then((response) => {
-        setrecipe(response.data);
+        setRecipe(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -69,33 +70,61 @@ export default function RecipePage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">{recipe.name}</h1>
-
-      <li key={recipe.id} className="mb-4 p-4 border rounded">
-        <h2 className="text-xl font-semibold"></h2>
-        <p>Cuisine: {recipe.cuisine}</p>
-        <p>Dietary style: {recipe.dietary_style}</p>
-        <p>Cooking time: {recipe.cooking_time} min</p>
-        <p>Ingredients: {recipe.ingredients} </p>
-        <ul>preparation: {recipe.preparation}</ul>
-      </li>
-
-      <div className="space-y-3">
-        <button
-          onClick={handleAddFavorites}
-          className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
-        >
-          Favorito
-        </button>
+    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl font-bold text-[#6B8E23]">{recipe.name}</h1>
       </div>
-      <div className="space-y-3">
-        <button
-          onClick={handleAddMealList}
-          className=" mt-8 w-full bg-[#4D3E7F] text-white py-2 rounded-full text-base font-medium hover:bg-[#47307D] transition"
-        >
-          Agregar a la lista de comidas
-        </button>
+      <div className="flex-1 overflow-y-auto px-6 pb-16">
+        <div key={recipe.id} className="mb-6 relative overflow-hidden">
+          <img
+            src={recipe.image}
+            alt={recipe.name}
+            className="w-full h-44  rounded-lg object-cover"
+          />
+          <div className="flex gap-2 py-4 ">
+            <div className="relative text-white text-xl flex-1 mr-2">
+              {recipe.cuisine} cusine
+            </div>
+            <div className="flex items-center mt-1">
+              <ClockIcon className="w-6 h-6 text-white mr-2" />
+              <span className="text-xl text-white">
+                {recipe.cooking_time_minutes} <span>min</span>
+              </span>
+            </div>
+          </div>
+          <div className="mb-2">
+            <h2 className="text-2xl font-bold text-[#6B8E23]">Preparation:</h2>
+          </div>
+          <div className="mb-2">
+            <h2 className="text-lg font-mediun text-white">
+              {recipe.preparation}
+            </h2>
+          </div>
+          <div className="mb-2">
+            <h2 className="text-2xl font-bold text-[#6B8E23]">Ingredients:</h2>
+          </div>
+          <div className="mb-2">
+            <h2 className="text-lg font-mediun text-white">
+              <ul className="flex flex-col space-y-2">
+                {recipe.ingredients &&
+                  recipe.ingredients.map((ingredient, index) => (
+                    <li key={index} className="text-white">
+                      {ingredient}
+                    </li>
+                  ))}
+              </ul>
+            </h2>
+          </div>
+        </div>
+
+        <div className=" flex justify-center">
+          <button
+            className=" mt-8 mb-12 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
+            onClick={handleAddMealList}
+          >
+            Add meal to cart +
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ export default function filteredResults() {
           </div>
         </div>
       ) : (
-        <p className="px-6 text-white">No results found.</p>
+        <p className="px-6  text-4xl text-white"> Ups, no results found.</p>
       )}
     </div>
   );
