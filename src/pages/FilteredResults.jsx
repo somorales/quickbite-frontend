@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import service from "../services/config";
+import { ClockIcon } from "@heroicons/react/24/outline";
 
 function useQuery() {
   const location = useLocation();
@@ -30,21 +31,41 @@ export default function filteredResults() {
   }, [cooking_time, dietary_style, cuisine]);
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Search Results</h1>
+    <div className="mt-6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div className="px-6 pb-6">
+        <h1 className="text-4xl font-bold text-[#6B8E23]">For You:</h1>
+      </div>
       {recipes.length > 0 ? (
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id} className="mb-4 p-4 border rounded">
-              <h2 className="text-xl font-semibold">{recipe.name}</h2>
-              <p>Cuisine: {recipe.cuisine}</p>
-              <p>Dietary style: {recipe.dietary_style}</p>
-              <p>Cooking time: {recipe.cooking_time} min</p>
-            </li>
-          ))}
-        </ul>
+        <div className="px-4 overflow-y-auto flex-1">
+          <div className="grid grid-cols-2 gap-4 pb-20">
+            {recipes.map((recipe) => (
+              <Link
+                to={`/recipes/${recipe._id}`}
+                key={recipe._id}
+                className="relative p-2"
+              >
+                <img
+                  src={recipe.image}
+                  alt={recipe.title}
+                  className="w-full h-40 object-cover rounded-[12px]"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                  <h3 className="text-sm font-medium bg-black bg-opacity-20 text-white">
+                    {recipe.name}
+                  </h3>
+                  <div className="flex items-center mt-1">
+                    <ClockIcon className="w-4 h-4 text-white mr-1" />
+                    <span className="text-xs text-white">
+                      {recipe.cooking_time_minutes} <span>min</span>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       ) : (
-        <p>No results found.</p>
+        <p className="px-6 text-white">No results found.</p>
       )}
     </div>
   );
