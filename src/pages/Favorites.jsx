@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { HeartIcon } from "@heroicons/react/24/solid";
 
 import service from "../services/config.js";
 
@@ -28,7 +29,7 @@ export default function Favorites() {
       });
   };
 
-  /* const handleProductFavoriteDelete = (recipeId) => {
+  const handleProductFavoriteDelete = (recipeId) => {
     service
       .delete(`/favorites/recipes/${recipeId}`)
       .then((response) => {
@@ -38,7 +39,7 @@ export default function Favorites() {
         console.log(err);
         setErrorMessage("Error de comunicación con el servidor.");
       });
-  };*/
+  };
   return (
     <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
       <div className="px-6 pb-6">
@@ -48,23 +49,30 @@ export default function Favorites() {
       {allFavorites.length > 0 ? (
         <div className="flex-1 overflow-y-auto px-6 pb-16">
           {allFavorites.map((recipe) => (
-            <Link to={`/recipes/${recipe._id}`}>
-              <div
-                key={recipe.id}
-                className="mb-6 relative rounded-lg overflow-hidden"
-              >
-                <img
-                  src={recipe.image}
-                  alt={recipe.name}
-                  className="w-full h-44 object-cover"
-                />
-                <div className="absolute bottom-0 left-0 p-2">
-                  <p className="text-xl text-white font-extrabold bg-black bg-opacity-20">
-                    {recipe.name}
-                  </p>
-                </div>
+            <div
+              key={recipe.id}
+              className="mb-6 relative rounded-lg overflow-hidden"
+            >
+              <div className="flex justify-end">
+                <button className=" group absolute w-9 h-9 right rounded-md z-50 lg:absolute lg:right-2 lg:top-2">
+                  <HeartIcon
+                    onClick={() => handleProductFavoriteDelete(recipe._id)}
+                    aria-hidden="true"
+                    className="h-7 w-7 text-[#1C4C0D] group-hover:text-[#efe8db]  group-hover:rounded-md"
+                  />
+                </button>
               </div>
-            </Link>
+              <img
+                src={recipe.image}
+                alt={recipe.name}
+                className="w-full h-44 object-cover"
+              />
+              <div className="absolute bottom-0 left-0 p-2">
+                <p className="text-xl text-white font-extrabold bg-black bg-opacity-20">
+                  {recipe.name}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       ) : (

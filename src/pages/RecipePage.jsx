@@ -5,7 +5,7 @@ import service from "../services/config.js";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Loading from "../components/Loading.jsx";
-import { ClockIcon } from "@heroicons/react/24/outline";
+import { ClockIcon, HeartIcon } from "@heroicons/react/24/outline";
 
 export default function RecipePage() {
   const navigate = useNavigate();
@@ -119,10 +119,22 @@ export default function RecipePage() {
 
         <div className=" flex justify-center">
           <button
-            className=" mt-8 mb-12 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
+            className=" mt-8 mb-6 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
             onClick={handleAddMealList}
           >
             Add meal to cart +
+          </button>
+        </div>
+        <div className=" flex justify-center">
+          <button
+            className=" mb-12 w-56 py-3 px-4  flex w-full items-center justify-center  text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
+            onClick={handleAddFavorites}
+          >
+            Add to
+            <HeartIcon
+              aria-hidden="true"
+              className="h-6 w-6 flex-shrink-0 text-[#efe8db] group-hover:text-gray-500"
+            />
           </button>
         </div>
       </div>
