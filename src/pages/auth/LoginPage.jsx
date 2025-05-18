@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context.jsx";
 import { ToastContext } from "../../context/toast.context.jsx";
+import logo from "../../assets/images/Logo.png";
 
 import { Link } from "react-router-dom";
 
@@ -62,13 +63,16 @@ function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen bg-[#1A1A1B]">
       <div className="p-4 rounded-lg  w-96 ">
+        <div className="flex justify-center">
+          <img src={logo} className="h-48 flex justify-center" />
+        </div>
         <form onSubmit={handleLogin} className="mt-8">
           <div className="mb-8">
             <label
               htmlFor="email"
-              className="block text-lg font-medium text-black mb-2"
+              className="block text-lg font-medium text-white mb-2"
             >
               Email address
             </label>
@@ -81,14 +85,14 @@ function LoginPage() {
               autoComplete="email"
               value={email}
               onChange={handleEmailChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5B3E96]"
+              className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] text-white  py-3 px-4 pl-10 hover-white  focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent "
             />
           </div>
 
           <div className="mb-8">
             <label
               htmlFor="password"
-              className="block text-lg font-medium text-black mb-2"
+              className="block text-lg font-medium text-white mb-2"
             >
               Password
             </label>
@@ -101,23 +105,23 @@ function LoginPage() {
               autoComplete="current-password"
               value={password}
               onChange={handlePasswordChange}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5B3E96]"
+              className="w-full bg-[#1A1A1B] rounded-[12px] font-bold   border border-white  placeholder-[#737373] text-white  py-3 px-4 pl-10 hover-white  focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent "
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-[#4D3E7F] text-white py-2 rounded-full text-lg font-medium hover:bg-[#47307D] transition"
-          >
-            Login
-          </button>
-          {/* Enlace para registrarse */}
-          <p className="mt-8 text-center text-lg font-medium text-[#4D3E7F]">
-            New here?{" "}
-            <Link
-              to="/signup"
-              className="font-bold text-lg  text-[##4D3E7F] hover:text-[#4D3E7F]"
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className=" mt-4 mb-4 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-[#1C4C0D] transition-colors"
             >
+              Login
+            </button>
+          </div>
+
+          {/* Enlace para registrarse */}
+          <p className="mt-8 text-center text-lg font-medium text-[#FFFDD0]">
+            New here?{" "}
+            <Link to="/signup" className="font-bold text-lg  text-[#FFFDD0] ">
               Create an account.
             </Link>
           </p>
