@@ -59,7 +59,7 @@ export default function FiltersPage() {
   };
 
   return (
-    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+    <div className=" flex flex-col bg-[#1A1A1B]">
       <div class="flex justify-center items-center w-full py-8">
         <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
           F I L T E R S
@@ -141,7 +141,7 @@ export default function FiltersPage() {
       </div>
       <div className=" flex justify-center">
         <button
-          className=" mt-48 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
+          className=" mt-28 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-gray-800 transition-colors"
           onClick={handleApply}
         >
           Apply

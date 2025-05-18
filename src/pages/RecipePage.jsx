@@ -70,7 +70,7 @@ export default function RecipePage() {
   };
 
   return (
-    <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+    <div className="flex flex-col h-screen bg-[#1A1A1B]">
       <div class="flex justify-center items-center w-full py-8">
         <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
           R E C I P E

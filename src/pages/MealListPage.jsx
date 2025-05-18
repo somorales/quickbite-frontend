@@ -80,7 +80,7 @@ export default function MealListPage() {
   };
 
   return (
-    <div className="mt-6 flex flex-col min-h-screen bg-[#1A1A1B] overflow-y-auto">
+    <div className="flex flex-col min-h-screen bg-[#1A1A1B] overflow-y-auto">
       <div class="flex justify-center items-center w-full py-8">
         <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
           M E A L L I S T
