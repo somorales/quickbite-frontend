@@ -42,6 +42,11 @@ export default function Favorites() {
   };
   return (
     <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div class="flex justify-center items-center w-full py-8">
+        <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
+          F A V O R I T E S
+        </h1>
+      </div>
       <div className="px-6 pb-6">
         <h1 className="text-4xl font-bold text-[#6B8E23]">Your favorites</h1>
       </div>
@@ -58,7 +63,7 @@ export default function Favorites() {
                   <HeartIcon
                     onClick={() => handleProductFavoriteDelete(recipe._id)}
                     aria-hidden="true"
-                    className="h-7 w-7 text-[#1C4C0D] group-hover:text-[#efe8db]  group-hover:rounded-md"
+                    className="h-7 w-7 text-[#FFFDD0]  group-hover:rounded-md"
                   />
                 </button>
               </div>
@@ -76,7 +81,7 @@ export default function Favorites() {
           ))}
         </div>
       ) : (
-        <p className="px-6  text-4xl text-white">
+        <p className="px-6  text-xl text-white">
           Start adding favorites to your list!
         </p>
       )}

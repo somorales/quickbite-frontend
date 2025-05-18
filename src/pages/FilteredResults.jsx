@@ -32,6 +32,11 @@ export default function filteredResults() {
 
   return (
     <div className="mt-6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div class="flex justify-center items-center w-full py-8">
+        <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
+          R E S U L T S
+        </h1>
+      </div>
       <div className="px-6 pb-6">
         <h1 className="text-4xl font-bold text-[#6B8E23]">For You:</h1>
       </div>
@@ -65,7 +70,7 @@ export default function filteredResults() {
           </div>
         </div>
       ) : (
-        <p className="px-6  text-4xl text-white"> Ups, no results found.</p>
+        <p className="px-6  text-xl text-white"> Ups, no results found.</p>
       )}
     </div>
   );

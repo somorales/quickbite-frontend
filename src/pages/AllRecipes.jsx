@@ -38,6 +38,11 @@ export default function HomePage() {
 
   return (
     <div className=" mt- 6 flex flex-col h-screen bg-[#1A1A1B]">
+      <div class="flex justify-center items-center w-full py-8">
+        <h1 class="text-lg font-semibold tracking-widest text-[#FFFDD0]">
+          R E C I P E S
+        </h1>
+      </div>
       <div className="px-6 pb-6">
         <h1 className="text-4xl  text-[#6B8E23]">Search recipes</h1>
       </div>
