@@ -114,7 +114,7 @@ function LoginPage() {
               type="submit"
               className=" mt-4 mb-4 w-56 py-3 px-4 bg-[#6B8E23] text-white rounded-md font-medium text-lg hover:bg-[#1C4C0D] transition-colors"
             >
-              Login
+              Sing in
             </button>
           </div>
 

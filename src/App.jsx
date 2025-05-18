@@ -1,21 +1,23 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // pages
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/auth/LoginPage";
 import Signup from "./pages/auth/Signup";
-import Footer from "./components/Footer";
+
 import Filters from "./pages/FiltersPage";
 import FilteredResults from "./pages/FilteredResults";
 import Favorites from "./pages/Favorites";
 import RecipePage from "./pages/RecipePage";
 import MealListPage from "./pages/MealListPage";
-
 import NavigationBar from "./components/NavigationBar";
 import AllRecipes from "./pages/AllRecipes";
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <>
       <Routes>
@@ -32,8 +34,9 @@ export default function App() {
         <Route path="/recipes/:recipeId" element={<RecipePage />} />
         <Route path="/mealsList" element={<MealListPage />} />
       </Routes>
-
-      <NavigationBar />
+      {location.pathname !== `/signup` && location.pathname !== `/login` && (
+        <NavigationBar />
+      )}
     </>
   );
 }
