@@ -1,4 +1,4 @@
-# Lexi
+# Quickbite
 
 ## [See the App!](https://lexi-words.netlify.app)
 
