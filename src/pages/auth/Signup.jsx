@@ -1,7 +1,7 @@
 import service from "../../services/config";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/Logo.png";
+import logo from "../../assets/images/logo.png";
 
 import { useContext } from "react";
 

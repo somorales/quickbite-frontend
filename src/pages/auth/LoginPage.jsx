@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context.jsx";
 import { ToastContext } from "../../context/toast.context.jsx";
-import logo from "../../assets/images/Logo.png";
+import logo from "../../assets/images/logo.png";
 
 import { Link } from "react-router-dom";
 
