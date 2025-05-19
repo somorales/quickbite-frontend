@@ -2,7 +2,7 @@
 
 ## [See the App!](https://lexi-words.netlify.app)
 
-![Quick bite Logo](./src/assets/imagenes/quick.png)
+![Quick bite Logo](./src/assets/images/quick.png)
 
 ## Description
 
