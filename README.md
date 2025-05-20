@@ -1,6 +1,6 @@
 # Quickbite
 
-## [See the App!](https://lexi-words.netlify.app)
+## [See the App!](https://qbite.netlify.app/)
 
 ![Quick bite Logo](./src/assets/images/quick.png)
 
@@ -65,4 +65,4 @@ Quickbite is the app that turns your favorite recipes into fast, organized shopp
 
 [Repository Link Server](https://github.com/somorales/quickbite-backend)
 
-[Deploy Link](https://lexi-words.netlify.app/)
+[Deploy Link](https://qbite.netlify.app/)
